@@ -98,8 +98,6 @@ auto main() -> int {
   // std::filesystem
   // Move semantics
   // bitset
-  // References
-  // https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/README.md
 
   // Algorithms
   // std::iota

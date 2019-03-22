@@ -1,4 +1,7 @@
 This is generated from [main.cpp](the source) when it compiles successfully.
+
+# References
+- https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/README.md
 ```c++
 #include <algorithm>
 #include <cassert>
@@ -100,8 +103,6 @@ auto main() -> int {
   // std::filesystem
   // Move semantics
   // bitset
-  // References
-  // https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/README.md
 
   // Algorithms
   // std::iota
