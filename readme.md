@@ -2,11 +2,13 @@ This is generated from [main.cpp](the source) when it compiles successfully.
 
 # References
 - https://github.com/AnthonyCalandra/modern-cpp-features/blob/master/README.md
+
 ```c++
 #include <algorithm>
 #include <cassert>
 #include <future>
 #include <iostream>
+#include <optional>
 #include <vector>
 
 auto main() -> int {
@@ -80,6 +82,21 @@ auto main() -> int {
   ////////////////////
   // C++17
   ////////////////////
+
+  // Optional types
+  // ------------------
+  // Overcomes the problem of defining a "not initialised" value which
+  // inevitably also means something else or you use -1 and accidentally index
+  // an array with it. Your functions can return a "not set" or an actual
+  // result.
+
+  // Some entries are not initialised to a value
+  std::vector<std::optional<long>> options{{}, 1, 2, 3, {}};
+
+  // Print all valid options
+  for (const auto &o : options)
+    if (o)
+      std::cout << o.value() << '\n';
 
   // std::quoted
 

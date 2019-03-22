@@ -2,6 +2,7 @@ objects = $(patsubst %.cpp, tmp/%.o, $(wildcard *.cpp))
 
 all: tmp
 	$(MAKE) -j $(shell nproc) $(objects)
+	clang-format -i main.cpp
 	cat _readme.md > readme.md
 	echo '```c++' >> readme.md
 	cat main.cpp >> readme.md
