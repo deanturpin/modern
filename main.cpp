@@ -37,6 +37,10 @@ auto main() -> int {
   assert(v1 == v2);
   assert(v1 == v3);
 
+  // More initialiser lists
+  // Note the double chevron is parsed correctly now (no need for a space)
+  std::vector<std::pair<int, std::string>> x{{1, "two"}, {3, "three"}};
+
   ////////////////////
   // C++14
   ////////////////////
