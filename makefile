@@ -2,7 +2,7 @@ objects = $(patsubst %.cpp, tmp/%.o, $(wildcard *.cpp))
 
 all: tmp
 	$(MAKE) -j $(shell nproc) $(objects)
-	echo 'This is generated from [main.cpp](the source) when it compiles successfully' > readme.md
+	echo 'This is generated from [main.cpp](the source) when it compiles successfully.' > readme.md
 	echo '```c++' >> readme.md
 	cat main.cpp >> readme.md
 	echo '```' >> readme.md

@@ -6,8 +6,6 @@
 
 auto main() -> int {
 
-  std::cout << "Modern C++ migration\n";
-
   ////////////////////
   // C++11
   ////////////////////

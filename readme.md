@@ -1,4 +1,4 @@
-This is generated from [main.cpp](the source) when it compiles successfully
+This is generated from [main.cpp](the source) when it compiles successfully.
 ```c++
 #include <algorithm>
 #include <cassert>
@@ -7,8 +7,6 @@ This is generated from [main.cpp](the source) when it compiles successfully
 #include <vector>
 
 auto main() -> int {
-
-  std::cout << "Modern C++ migration\n";
 
   ////////////////////
   // C++11
