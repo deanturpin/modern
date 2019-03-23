@@ -84,7 +84,8 @@ auto main() -> int {
   printer();
 
   // However, you can define them in place as a parameter so you don't have to
-  // go hunting for the implementation. Here's another for-loop too.
+  // go hunting for the implementation. Here's another new for-loop variation
+  // too.
   std::for_each(std::cbegin(v), std::cend(v),
                 [](const auto &i) { std::cout << i << '\n'; });
 
