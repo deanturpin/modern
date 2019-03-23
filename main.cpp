@@ -34,12 +34,15 @@ auto main() -> int {
 
   // Similarly for creating more complex types.
   struct S {
-    int a;
-    int b;
-    int c;
+    int x;
+    struct Foo {
+      int i;
+      int j;
+      int a[3];
+    } b;
   };
 
-  S s{1, 2, 3};
+  S s1 = {1, {2, 3, {4, 5, 6}}};
 
   // ------------------
   // Range-based for loops
