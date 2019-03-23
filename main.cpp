@@ -107,6 +107,14 @@ auto main() -> int {
   f.get();
 
   // ------------------
+  // Smart pointers
+  // ------------------
+
+  // You no longer need to use new and delete explicitly. Smart pointers clean
+  // up after themselves when they go out of scope: Resource Allocation Is
+  // Initialistion (RAII).
+
+  // ------------------
   // Optional types
   // ------------------
 
