@@ -120,7 +120,7 @@ auto main() -> int {
   // Optional types
   // ------------------
 
-  // Overcomes the problem of defining a "not initialised" value which
+  // These overcome the problem of defining a "not initialised" value which
   // inevitably also means something else or you use -1 and accidentally index
   // an array with it. Your functions can return a "not set" or an actual
   // result.
