@@ -8,6 +8,14 @@
 auto main() -> int {
 
   // ------------------
+  // Auto types
+  // ------------------
+
+  // You can simplify complicated types with auto.
+  auto x1 = 5u;
+  auto x2 = 0.0;
+
+  // ------------------
   // Initialiser lists
   // ------------------
 
@@ -17,6 +25,21 @@ auto main() -> int {
   std::vector<int> v{1, 2, 3, 4, 5, 6};
   std::vector<int> v1(v);
   std::vector<int> v2 = v;
+  std::vector<int> v3{v};
+
+  // Tnere are often "make_" routines to build common types but you can also
+  // just use an init list.
+  const std::pair<int, std::string> p1 = std::make_pair(1, "two");
+  const std::pair<int, std::string> p2{1, "two"};
+
+  // Similarly for creating more complex types.
+  struct S {
+    int a;
+    int b;
+    int c;
+  };
+
+  S s{1, 2, 3};
 
   // ------------------
   // Range-based for loops
@@ -28,38 +51,24 @@ auto main() -> int {
   for (size_t i = 0; i < v1.size(); ++i)
     v1.at(i) += 1;
 
-  for (int &i : v2)
+  // Clumsy explicit iterator type declarations can be cleaned up with auto.
+  // And there's that strange dereferencing idiom.
+  for (/* auto */ std::vector<int>::iterator i = v2.begin(); i != v2.end(); ++i)
+    *i += 1;
+
+  // Or just drop the iterators altogether
+  for (int &i : v3)
     i += 1;
 
-  // ------------------
-  // Auto types
-  // ------------------
-
-  // The auto keyword is useful in so many places
-  auto v3{v};
-  for (auto &i : v3)
+  // Even better use auto
+  auto v4{v};
+  for (auto &i : v4)
     i += 1;
 
   // Lets confirm they're all the same
   assert(v1 == v2);
   assert(v1 == v3);
-
-  // ------------------
-  // More initialiser lists
-  // ------------------
-
-  // Tnere are often make_ routines to build common types but you can also just
-  // use an init list.
-  const std::pair<int, std::string> p1 = std::make_pair(1, "two");
-  const std::pair<int, std::string> p2{1, "two"};
-
-  // Similarly for creating more complex types
-  struct S {
-    int a;
-    int b;
-    int c;
-  };
-  S s{1, 2, 3};
+  assert(v1 == v4);
 
   // ------------------
   // Lambda expressions
@@ -67,10 +76,12 @@ auto main() -> int {
 
   // Think function pointers but a much friendlier implementation
   const auto printer = []() { std::cout << "I am a lambda\n"; };
+
+  // Call like a regular function
   printer();
 
-  // You can define them in place as a parameter so you don't have to go hunting
-  // for the implementation
+  // However, you can define them in place as a parameter so you don't have to
+  // go hunting for the implementation. Here's another for-loop too.
   std::for_each(std::cbegin(v), std::cend(v),
                 [](const auto &i) { std::cout << i << '\n'; });
 
@@ -146,6 +157,7 @@ auto main() -> int {
   // it, potentially giving huge performance benefits.
 
   // std::quoted
+  // std::for_each
   // std::string_view
   // std::clamp
   // std::byte
