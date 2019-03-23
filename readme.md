@@ -106,7 +106,7 @@ auto main() -> int {
   auto f = std::async(std::launch::async, complicated);
 
   // Do something else and then block until the data is ready
-  f.get();
+  std::cout << f.get() << '\n';
 
   // ------------------
   // Smart pointers
