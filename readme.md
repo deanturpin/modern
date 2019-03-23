@@ -93,7 +93,12 @@ auto main() -> int {
   // result.
 
   // Some entries are not initialised to a value
-  std::vector<std::optional<long>> options{{}, 1, 2, 3, {}};
+  std::vector<std::optional<long>> options;
+  options.push_back({});
+  options.push_back(1);
+  options.push_back(2);
+  options.push_back(3);
+  options.push_back({});
 
   // Print all valid options
   for (const auto &o : options)
