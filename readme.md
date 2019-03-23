@@ -45,8 +45,18 @@ auto main() -> int {
 
   // More initialiser lists
   // ------------------
-  // Note the double chevron is parsed correctly now (no need for a space)
-  std::vector<std::pair<int, std::string>> x{{1, "two"}, {3, "three"}};
+  // Tnere are often make_ routines to build common types but you can also just
+  // use an init list.
+  const std::pair<int, std::string> p1 = std::make_pair(1, "two");
+  const std::pair<int, std::string> p2{1, "two"};
+
+  // Similarly for creating more complex types
+  struct S {
+    int a;
+    int b;
+    int c;
+  };
+  S s{1, 2, 3};
 
   // Lambda expressions
   // ------------------
