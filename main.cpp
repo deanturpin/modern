@@ -7,11 +7,8 @@
 
 auto main() -> int {
 
-  ////////////////////
-  // C++11
-  ////////////////////
-
   // Initialiser lists
+  // ------------------
   // You used to have to create a vector and then push elements onto it. But
   // with initialiser lists you can populate containers much more concisely.
   std::vector<int> v{1, 2, 3, 4, 5, 6};
@@ -19,6 +16,7 @@ auto main() -> int {
   std::vector<int> v2 = v;
 
   // Range-based for loops
+  // ------------------
   // We used to have explicit indices or iterators but that can all be cleaned
   // up. Note the use of .at() rather than [] which adds range error
   // protection.
@@ -29,6 +27,7 @@ auto main() -> int {
     i += 1;
 
   // Auto types
+  // ------------------
   // The auto keyword is useful in so many places
   auto v3{v};
   for (auto &i : v3)
@@ -39,6 +38,7 @@ auto main() -> int {
   assert(v1 == v3);
 
   // More initialiser lists
+  // ------------------
   // Note the double chevron is parsed correctly now (no need for a space)
   std::vector<std::pair<int, std::string>> x{{1, "two"}, {3, "three"}};
 
@@ -69,14 +69,6 @@ auto main() -> int {
   // Do something else and then block until the data is ready
   f.get();
 
-  ////////////////////
-  // C++14
-  ////////////////////
-
-  ////////////////////
-  // C++17
-  ////////////////////
-
   // Optional types
   // ------------------
   // Overcomes the problem of defining a "not initialised" value which
@@ -92,13 +84,31 @@ auto main() -> int {
     if (o)
       std::cout << o.value() << '\n';
 
-  // std::quoted
-
-  // std::optional
-  // std::string_view
-  // std::async
-  // Binary literals
   // Digit separators
+  // ------------------
+  // If you're defining hardware interfaces then you'll probably have register
+  // maps like this.
+  const unsigned int reg1{0x1234'5678};
+
+  // Binary literals
+  // ------------------
+  // You can define things in binary if it's more expressive.
+  const unsigned int reg2 = 0b0000'11111'0000'1111;
+
+  // Brace initialers
+  // ------------------
+  // Brace initialisers take a bit of getting used to but they do give you extra
+  // checks. For instance this gives a narrowing warning.
+  float narrow{0.1};
+
+  // Move semantics
+  // ------------------
+  // This is a biggie that you exploit just by moving to C++11 and beyond. The
+  // compiler can now choose to move data where previously it would have copied
+  // it, potentially giving huge performance benefits.
+
+  // std::quoted
+  // std::string_view
   // std::clamp
   // std::byte
   // STL algorithms - std::adjacent_difference
@@ -112,7 +122,6 @@ auto main() -> int {
   // Smart pointers
   // Chrono
   // std::filesystem
-  // Move semantics
   // bitset
 
   // Algorithms
