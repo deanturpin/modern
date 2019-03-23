@@ -8,16 +8,21 @@
 
 auto main() -> int {
 
+  // ------------------
   // Initialiser lists
   // ------------------
-  // You used to have to create a vector and then push elements onto it. But
-  // with initialiser lists you can populate containers much more concisely.
+
+  // It was common to create a vector and then push elements onto it (ignoring
+  // the potential copy overhead of resizing vectors). But with initialiser
+  // lists you can populate containers much more concisely.
   std::vector<int> v{1, 2, 3, 4, 5, 6};
   std::vector<int> v1(v);
   std::vector<int> v2 = v;
 
+  // ------------------
   // Range-based for loops
   // ------------------
+
   // We used to have explicit indices or iterators but that can all be cleaned
   // up. Note the use of .at() rather than [] which adds range error
   // protection.
@@ -27,8 +32,10 @@ auto main() -> int {
   for (int &i : v2)
     i += 1;
 
+  // ------------------
   // Auto types
   // ------------------
+
   // The auto keyword is useful in so many places
   auto v3{v};
   for (auto &i : v3)
@@ -38,8 +45,10 @@ auto main() -> int {
   assert(v1 == v2);
   assert(v1 == v3);
 
+  // ------------------
   // More initialiser lists
   // ------------------
+
   // Tnere are often make_ routines to build common types but you can also just
   // use an init list.
   const std::pair<int, std::string> p1 = std::make_pair(1, "two");
@@ -53,8 +62,10 @@ auto main() -> int {
   };
   S s{1, 2, 3};
 
+  // ------------------
   // Lambda expressions
   // ------------------
+
   // Think function pointers but a much friendlier implementation
   const auto printer = []() { std::cout << "I am a lambda\n"; };
   printer();
@@ -64,8 +75,10 @@ auto main() -> int {
   std::for_each(std::cbegin(v), std::cend(v),
                 [](const auto &i) { std::cout << i << '\n'; });
 
+  // ------------------
   // Threads
   // ------------------
+
   // Thread are much neater than the old POSIX library but futures
   // are really interesting and let you return the stuff you're interested in
   // much more easily.
@@ -80,8 +93,10 @@ auto main() -> int {
   // Do something else and then block until the data is ready
   f.get();
 
+  // ------------------
   // Optional types
   // ------------------
+
   // Overcomes the problem of defining a "not initialised" value which
   // inevitably also means something else or you use -1 and accidentally index
   // an array with it. Your functions can return a "not set" or an actual
@@ -100,25 +115,33 @@ auto main() -> int {
     if (o)
       std::cout << o.value() << '\n';
 
+  // ------------------
   // Digit separators
   // ------------------
+
   // If you're defining hardware interfaces then you'll probably have register
   // maps like this.
   const unsigned int reg1{0x1234'5678};
 
+  // ------------------
   // Binary literals
   // ------------------
+
   // You can define things in binary if it's more expressive.
   const unsigned int reg2 = 0b0000'11111'0000'1111;
 
+  // ------------------
   // Brace initialers
   // ------------------
+
   // Brace initialisers take a bit of getting used to but they do give you extra
   // checks. For instance this gives a narrowing warning.
   float narrow{0.1};
 
+  // ------------------
   // Move semantics
   // ------------------
+
   // This is a biggie that you exploit just by moving to C++11 and beyond. The
   // compiler can now choose to move data where previously it would have copied
   // it, potentially giving huge performance benefits.
