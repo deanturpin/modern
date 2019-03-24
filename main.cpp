@@ -188,4 +188,8 @@ auto main() -> int {
 
   // Algorithms
   // std::iota
+
+  // C++2a (what will become C++20)
+  // three-way comparison using the "spaceship operator", operator <=>
+  // designated initializers
 }
