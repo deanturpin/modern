@@ -192,4 +192,5 @@ auto main() -> int {
   // C++2a (what will become C++20)
   // three-way comparison using the "spaceship operator", operator <=>
   // designated initializers
+  // Software transactional memory
 }
