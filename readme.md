@@ -150,8 +150,9 @@ auto main() -> int {
   // Binary literals
   // ------------------
 
-  // You can define things in binary if it's more expressive.
-  const unsigned int reg2 = 0b0000'11111'0000'1111;
+  // You can even define things in binary if it's more expressive. And also use
+  // types with explicit size.
+  const uint32_t reg2 = 0b0000'11111'0000'1111;
 
   // ------------------
   // Brace initialers
