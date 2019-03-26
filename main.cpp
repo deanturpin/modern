@@ -22,11 +22,15 @@ auto main() -> int {
   // It was common to create a vector and then push elements onto it (ignoring
   // the potential copy overhead of resizing vectors). But with initialiser
   // lists you can populate containers much more concisely.
-  std::vector<int> v1{1, 2, 3, 4, 5, 6};
+
+  // Let's start with a container
+  const std::vector<int> v1{1, 2, 3, 4, 5, 6};
+
+  // Make some copies
   std::vector<int> v2 = v1;
   std::vector<int> v3{v1};
 
-  // Declare a copy with auto
+  // Make a copy using auto
   auto v4{v1};
 
   // Tnere are often "make_" routines to build common types but you can also
