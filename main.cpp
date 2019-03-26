@@ -22,10 +22,12 @@ auto main() -> int {
   // It was common to create a vector and then push elements onto it (ignoring
   // the potential copy overhead of resizing vectors). But with initialiser
   // lists you can populate containers much more concisely.
-  std::vector<int> v{1, 2, 3, 4, 5, 6};
-  std::vector<int> v1(v);
-  std::vector<int> v2 = v;
-  std::vector<int> v3{v};
+  std::vector<int> v1{1, 2, 3, 4, 5, 6};
+  std::vector<int> v2 = v1;
+  std::vector<int> v3{v1};
+
+  // Declare a copy with auto
+  auto v4{v1};
 
   // Tnere are often "make_" routines to build common types but you can also
   // just use an init list.
@@ -48,30 +50,24 @@ auto main() -> int {
   // Range-based for loops
   // ------------------
 
-  // We used to have explicit indices or iterators but that can all be cleaned
-  // up. Note the use of .at() rather than [] which adds range error
-  // protection.
-  for (size_t i = 0; i < v1.size(); ++i)
-    v1.at(i) += 1;
-
-  // Clumsy explicit iterator type declarations can be cleaned up with auto.
-  // And there's that strange dereferencing idiom.
+  // Clumsy explicit iterator declarations can be cleaned up with auto.
+  // And we can avoid that strange dereferencing idiom.
   for (/* auto */ std::vector<int>::iterator i = v2.begin(); i != v2.end(); ++i)
     *i += 1;
 
-  // Or just drop the iterators altogether
+  // Drop the iterators altogether
   for (int &i : v3)
     i += 1;
 
-  // Even better use auto
-  auto v4{v};
+  // Or even better use auto. Note you don't have access to the current index,
+  // which isn't necessarily a bad thing.
   for (auto &i : v4)
     i += 1;
 
-  // Lets confirm they're all the same
-  assert(v1 == v2);
-  assert(v1 == v3);
-  assert(v1 == v4);
+  // Confirm they're all identical
+  assert(v1 != v2);
+  assert(v2 == v3);
+  assert(v2 == v4);
 
   // ------------------
   // Lambda expressions
@@ -86,7 +82,8 @@ auto main() -> int {
   // However, you can define them in place as a parameter so you don't have to
   // go hunting for the implementation. Here's another new for-loop variation
   // too. Note the use of the cbegin routine rather than the method.
-  std::for_each(std::cbegin(v), std::cend(v),
+  const std::vector<double> d{0.0, 0.1, 0.2};
+  std::for_each(std::cbegin(d), std::cend(d),
                 [](const auto &i) { std::cout << i << '\n'; });
 
   // ------------------
