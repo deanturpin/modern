@@ -160,7 +160,7 @@ auto main() -> int {
 
   // Brace initialisers take a bit of getting used to but they do give you extra
   // checks. For instance this gives a narrowing warning.
-  float narrow{0.1};
+  const float narrow{0.1};
 
   // ------------------
   // Move semantics
