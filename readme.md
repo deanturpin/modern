@@ -8,7 +8,8 @@
 #include <optional>
 #include <vector>
 
-auto main() -> int {
+auto main() -> int
+{
 
   // ------------------
   // Auto types
@@ -76,9 +77,11 @@ auto main() -> int {
   const std::pair<int, std::string> p1{1, "two"};
 
   // Initialise complex types
-  struct S {
+  struct S
+  {
     int x;
-    struct Foo {
+    struct Foo
+    {
       int i;
       int j;
       int a[3];
