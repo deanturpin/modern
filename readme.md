@@ -1,6 +1,7 @@
 ```c++
 #include <algorithm>
 #include <cassert>
+#include <deque>
 #include <future>
 #include <iostream>
 #include <optional>
@@ -145,22 +146,24 @@ auto main() -> int {
   // ------------------
 
   // These overcome the problem of defining a "not initialised" value which
-  // inevitably also means something else or you use -1 and accidentally index
-  // an array with it. Your functions can return a "not set" or an actual
-  // result.
+  // inevitably also means something else or you use -1 and accidentally
+  // indexing an array with it. Your functions can effectively return a
+  // "not-set".
 
-  // Some entries are not initialised to a value
-  std::vector<std::optional<long>> options;
-  options.push_back({});
-  options.push_back(1);
-  options.push_back(2);
-  options.push_back(3);
-  options.push_back({});
+  // Create a container with some default entries
+  std::deque<std::optional<long>> options{0, 1, 2, 3, 4};
+  assert(options.size() == 5);
 
-  // Print all valid options
-  for (const auto &o : options)
-    if (o)
-      std::cout << o.value() << '\n';
+  // Create some undefined entries
+  options.push_front({});
+  options.back() = {};
+  assert(options.size() == 6);
+
+  // Count the valid entries
+  const auto c = std::count_if(std::cbegin(options), std::cend(options),
+                               [](const auto &o) { return o; });
+
+  assert(c == 4);
 
   // ------------------
   // Digit separators
