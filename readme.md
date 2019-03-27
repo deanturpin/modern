@@ -116,28 +116,25 @@ auto main() -> int {
   assert(v2 == v3);
   assert(v2 == v4);
 
-  // ------------------
   // Lambda expressions
-  // ------------------
-
+  //
   // Think function pointers but a much friendlier implementation. Call like a
   // regular function or pass them as a parameter.
-  const auto printer = []() { std::cout << "I am a first-class citizen\n"; };
-
-  printer();
-
+  //
   // You can also define them *in place* so you don't have to go hunting for
   // the implementation like you might if you passed a function name. Here's
   // another new for-loop variation too. Note the use of the cbegin routine
   // rather than the method.
+  const auto printer = []() { std::cout << "I am a first-class citizen\n"; };
+
+  printer(); // Call like a function
+
   const std::vector<double> d{0.0, 0.1, 0.2};
   std::for_each(std::cbegin(d), std::cend(d),
-                [](const auto &i) { std::cout << i << '\n'; });
+                [](const auto &i) { std::cout << i << '\n'; }); // In-place
 
-  // ------------------
   // Threads
-  // ------------------
-
+  //
   // Thread are much neater than the old POSIX library but futures
   // are really interesting and let you return the stuff you're interested in
   // much more easily.
@@ -154,18 +151,14 @@ auto main() -> int {
   // the return type of complicated() and nothing else needs to change.
   std::cout << f.get() << '\n';
 
-  // ------------------
   // Smart pointers
-  // ------------------
-
+  //
   // You no longer need to use new and delete explicitly. Smart pointers clean
   // up after themselves when they go out of scope: Resource Allocation Is
   // Initialistion (RAII).
 
-  // ------------------
   // Optional types
-  // ------------------
-
+  //
   // This overcomes the problem of defining a "not initialised" value which is
   // inevitably used to index an array. Your functions can also effectively
   // return a "no result".
@@ -185,10 +178,8 @@ auto main() -> int {
 
   assert(c == 4);
 
-  // ------------------
   // Digit separators
-  // ------------------
-
+  //
   // If you're defining hardware interfaces then you'll probably have register
   // maps like this. Using digit separators could help improve readability in
   // some cases.
@@ -204,10 +195,8 @@ auto main() -> int {
   assert(netmask == 0xff'ff'ff'00);
   assert(sizeof netmask == 4);
 
-  // ------------------
   // Move semantics
-  // ------------------
-
+  //
   // This is a biggie that you exploit just by moving to C++11 and beyond. The
   // compiler can now choose to move data where previously it would have copied
   // it, potentially giving huge performance benefits.
