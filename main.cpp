@@ -91,11 +91,17 @@ auto main() -> int {
   // ------------------
 
   // Clumsy explicit iterator declarations can be cleaned up with auto.
-  // And we can avoid that strange dereferencing idiom.
-  for (/* auto */ std::list<int>::iterator i = v2.begin(); i != v2.end(); ++i)
+  //
+  // So this:
+  // for (std::list<int>::iterator i = v2.begin(); i != v2.end(); ++i)
+  //	*i += 1;
+
+  // Becomes this:
+  for (auto i = v2.begin(); i != v2.end(); ++i)
     *i += 1;
 
-  // We can drop the iterators altogether
+  // In fact we can drop the iterators altogether and also avoid that strange
+  // dereferencing idiom.
   for (int &i : v3)
     i += 1;
 
