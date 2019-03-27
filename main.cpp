@@ -29,8 +29,8 @@ auto main() -> int {
 
   assert(y1 == 2 && y2 == 2);
 
-  // But what do these even point to? (Hint: auto references "decay" to the
-  // base type - no consts no refs)
+  // But what do these even point to? (Hint: auto references "decay" to the base
+  // type - no consts no refs)
   auto y3  = y2;
   auto &y4 = y2;
   y3       = 3;
@@ -57,9 +57,9 @@ auto main() -> int {
   // Initialiser lists
   // ------------------
 
-  // We used to create a vector and then push elements onto it (ignoring
-  // the potential copy overhead of resizing vectors). But with initialiser
-  // lists you can populate containers much more concisely.
+  // We used to create a vector and then push elements onto it (ignoring the
+  // potential copy overhead of resizing vectors). But with initialiser lists
+  // you can populate containers much more concisely.
 
   // Let's start with a container
   const std::list<int> v1{1, 2, 3, 4, 5, 6};
@@ -120,10 +120,10 @@ auto main() -> int {
   // Think function pointers but a much friendlier implementation. Call like a
   // regular function or pass them as a parameter.
   //
-  // You can also define them *in place* so you don't have to go hunting for
-  // the implementation like you might if you passed a function name. Here's
-  // another new for-loop variation too. Note the use of the cbegin routine
-  // rather than the method.
+  // You can also define them *in place* so you don't have to go hunting for the
+  // implementation like you might if you passed a function name. Here's another
+  // new for-loop variation too. Note the use of the cbegin routine rather than
+  // the method.
   const auto printer = []() { std::cout << "I am a first-class citizen\n"; };
 
   printer(); // Call like a function
@@ -134,9 +134,9 @@ auto main() -> int {
 
   // Threads
   //
-  // Thread are much neater than the old POSIX library but futures
-  // are really interesting and let you return the stuff you're interested in
-  // much more easily.
+  // Thread are much neater than the old POSIX library but futures are really
+  // interesting and let you return the stuff you're interested in much more
+  // easily.
 
   // Define a processor-heavy routine as a lambda. Here the return has been
   // declared explicitly.

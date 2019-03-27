@@ -15,14 +15,13 @@ auto main() -> int
   // Auto types
   // ------------------
 
-  // Type inference is a game changer. You can simplify complicated types with
-  // auto. But it is a balance of convenience over readability.
+  // Type inference is a game changer. You can simplify complicated types with auto. But it is a balance of convenience over
+  // readability.
   auto x1 = 5u;
   auto x2{0.0};
   auto str{"blah"};
 
-  // And there are some gotchas that arguably wouldn't make it through code
-  // review but are perfectly valid code.
+  // And there are some gotchas that arguably wouldn't make it through code review but are perfectly valid code.
   int y1 = 1;
   int &y2 = y1;
 
@@ -31,8 +30,7 @@ auto main() -> int
 
   assert(y1 == 2 && y2 == 2);
 
-  // But what do these even point to? (Hint: auto references "decay" to the
-  // base type - no consts no refs)
+  // But what do these even point to? (Hint: auto references "decay" to the base type - no consts no refs)
   auto y3 = y2;
   auto &y4 = y2;
   y3 = 3;
@@ -47,8 +45,8 @@ auto main() -> int
   // Brace initialers
   // ------------------
 
-  // Brace initialisers take a bit of getting used to but they do give you extra
-  // checks. The compiler coughs a narrowing warning for the following.
+  // Brace initialisers take a bit of getting used to but they do give you extra checks. The compiler coughs a narrowing warning for
+  // the following.
   const double wide{1.0};
   const float narrow{wide};
 
@@ -59,9 +57,8 @@ auto main() -> int
   // Initialiser lists
   // ------------------
 
-  // We used to create a vector and then push elements onto it (ignoring
-  // the potential copy overhead of resizing vectors). But with initialiser
-  // lists you can populate containers much more concisely.
+  // We used to create a vector and then push elements onto it (ignoring the potential copy overhead of resizing vectors). But
+  // with initialiser lists you can populate containers much more concisely.
 
   // Let's start with a container
   const std::list<int> v1{1, 2, 3, 4, 5, 6};
@@ -104,13 +101,11 @@ auto main() -> int
   for (auto i = v2.begin(); i != v2.end(); ++i)
     *i += 1;
 
-  // In fact we can drop the iterators altogether and also avoid that strange
-  // dereferencing idiom.
+  // In fact we can drop the iterators altogether and also avoid that strange dereferencing idiom.
   for (int &i : v3)
     i += 1;
 
-  // Or even use auto. Note you don't have access to the current index, which
-  // isn't necessarily a bad thing.
+  // Or even use auto. Note you don't have access to the current index, which isn't necessarily a bad thing.
   for (auto &i : v4)
     i += 1;
 
@@ -121,50 +116,41 @@ auto main() -> int
 
   // Lambda expressions
   //
-  // Think function pointers but a much friendlier implementation. Call like a
-  // regular function or pass them as a parameter.
+  // Think function pointers but a much friendlier implementation. Call like a regular function or pass them as a parameter.
   //
-  // You can also define them *in place* so you don't have to go hunting for
-  // the implementation like you might if you passed a function name. Here's
-  // another new for-loop variation too. Note the use of the cbegin routine
-  // rather than the method.
+  // You can also define them *in place* so you don't have to go hunting for the implementation like you might if you passed a
+  // function name. Here's another new for-loop variation too. Note the use of the cbegin routine rather than the method.
   const auto printer = []() { std::cout << "I am a first-class citizen\n"; };
 
   printer(); // Call like a function
 
   const std::vector<double> d{0.0, 0.1, 0.2};
-  std::for_each(std::cbegin(d), std::cend(d),
-                [](const auto &i) { std::cout << i << '\n'; }); // In-place
+  std::for_each(std::cbegin(d), std::cend(d), [](const auto &i) { std::cout << i << '\n'; }); // In-place
 
   // Threads
   //
-  // Thread are much neater than the old POSIX library but futures
-  // are really interesting and let you return the stuff you're interested in
-  // much more easily.
+  // Thread are much neater than the old POSIX library but futures are really interesting and let you return the stuff you're
+  // interested in much more easily.
 
-  // Define a processor-heavy routine as a lambda. Here the return has been
-  // declared explicitly.
+  // Define a processor-heavy routine as a lambda. Here the return has been declared explicitly.
   const auto complicated = []() { return 1; };
 
-  // Push the into the background, note we don't have to actually define what f
-  // is thanks to auto. It's actually a std::future<int>
+  // Push the into the background, note we don't have to actually define what f is thanks to auto. It's actually a std::future<int>
   auto f = std::async(std::launch::async, complicated);
 
-  // Do something else and then block until the data is ready. We could change
-  // the return type of complicated() and nothing else needs to change.
+  // Do something else and then block until the data is ready. We could change the return type of complicated() and nothing else
+  // needs to change.
   std::cout << f.get() << '\n';
 
   // Smart pointers
   //
-  // You no longer need to use new and delete explicitly. Smart pointers clean
-  // up after themselves when they go out of scope: Resource Allocation Is
-  // Initialistion (RAII).
+  // You no longer need to use new and delete explicitly. Smart pointers clean up after themselves when they go out of scope:
+  // Resource Allocation Is Initialistion (RAII).
 
   // Optional types
   //
-  // This overcomes the problem of defining a "not initialised" value which is
-  // inevitably used to index an array. Your functions can also effectively
-  // return a "no result".
+  // This overcomes the problem of defining a "not initialised" value which is inevitably used to index an array. Your functions can
+  // also effectively return a "no result".
 
   // Create a container with some default entries
   std::deque<std::optional<long>> options{0, 1, 2, 3, 4};
@@ -176,23 +162,20 @@ auto main() -> int
   assert(options.size() == 6);
 
   // Count the valid entries with the help of a lambda expression
-  const auto c = std::count_if(std::cbegin(options), std::cend(options),
-                               [](const auto &o) { return o; });
+  const auto c = std::count_if(std::cbegin(options), std::cend(options), [](const auto &o) { return o; });
 
   assert(c == 4);
 
   // Digit separators
   //
-  // If you're defining hardware interfaces then you'll probably have register
-  // maps like this. Using digit separators could help improve readability in
-  // some cases.
+  // If you're defining hardware interfaces then you'll probably have register maps like this. Using digit separators could help
+  // improve readability in some cases.
   const unsigned int reg1 = 0x5692a5b6;
   const unsigned int reg2 = 0x5692'a5b6;
 
   assert(reg1 == reg2);
 
-  // You can even define things in binary if it's clearer. And also specify the
-  // size of a type explicitly.
+  // You can even define things in binary if it's clearer. And also specify the size of a type explicitly.
   const uint32_t netmask{0b11111111'11111111'11111111'00000000};
 
   assert(netmask == 0xff'ff'ff'00);
@@ -200,9 +183,8 @@ auto main() -> int
 
   // Move semantics
   //
-  // This is a biggie that you exploit just by moving to C++11 and beyond. The
-  // compiler can now choose to move data where previously it would have copied
-  // it, potentially giving huge performance benefits.
+  // This is a biggie that you exploit just by moving to C++11 and beyond. The compiler can now choose to move data where previously
+  // it would have copied it, potentially giving huge performance benefits.
 
   // std::quoted
   // std::for_each
