@@ -21,9 +21,10 @@ auto main() -> int {
   // review but are perfectly valid code.
   int y1  = 1;
   int &y2 = y1;
+  y2      = 2;
 
-  assert(y1 == 1);
-  assert(y2 == 1);
+  assert(y1 == 2);
+  assert(y2 == 2);
 
   // What do these even point to? (Hint: auto references "decay")
   auto y3  = y2;
