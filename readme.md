@@ -111,7 +111,7 @@ auto main() -> int {
   for (auto &i : v4)
     i += 1;
 
-  // Confirm they're what we expect after all the loops
+  // Confirm the various for-loops do the same thing.
   assert(v1 != v2);
   assert(v2 == v3);
   assert(v2 == v4);
@@ -120,15 +120,16 @@ auto main() -> int {
   // Lambda expressions
   // ------------------
 
-  // Think function pointers but a much friendlier implementation
+  // Think function pointers but a much friendlier implementation. Call like a
+  // regular function or pass them as a parameter.
   const auto printer = []() { std::cout << "I am a first class citizen\n"; };
 
-  // Call like a regular function or pass them as a parameter
   printer();
 
   // You can also define them *in place* so you don't have to go hunting for
-  // the implementation. Here's another new for-loop variation too. Note the
-  // use of the cbegin routine rather than the method.
+  // the implementation like you might if you passed a function name. Here's
+  // another new for-loop variation too. Note the use of the cbegin routine
+  // rather than the method.
   const std::vector<double> d{0.0, 0.1, 0.2};
   std::for_each(std::cbegin(d), std::cend(d),
                 [](const auto &i) { std::cout << i << '\n'; });
@@ -141,14 +142,16 @@ auto main() -> int {
   // are really interesting and let you return the stuff you're interested in
   // much more easily.
 
-  // Define a processor-heavy routine as a lambda
+  // Define a processor-heavy routine as a lambda. Here the return has been
+  // declared explicitly.
   const auto complicated = []() { return 1; };
 
   // Push the into the background, note we don't have to actually define what f
-  // is thanks to auto
+  // is thanks to auto. It's actually a std::future<int>
   auto f = std::async(std::launch::async, complicated);
 
-  // Do something else and then block until the data is ready
+  // Do something else and then block until the data is ready. We could change
+  // the return type of complicated() and nothing else needs to change.
   std::cout << f.get() << '\n';
 
   // ------------------
