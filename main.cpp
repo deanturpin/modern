@@ -7,14 +7,14 @@
 #include <optional>
 #include <vector>
 
+// Auto types
+//
+// OK, so all functions must be declared like this...
+
 auto main() -> int {
-
-  // ------------------
-  // Auto types
-  // ------------------
-
-  // Type inference is a game changer. You can simplify complicated types with
-  // auto. But it is a balance of convenience over readability.
+  // Now I have your attention... but really type inference is a game changer.
+  // You can simplify complicated types with auto. But it is a balance of
+  // convenience over readability.
   auto x1 = 5u;
   auto x2{0.0};
   auto str{"blah"};
@@ -30,7 +30,7 @@ auto main() -> int {
   assert(y1 == 2 && y2 == 2);
 
   // But what do these even point to? (Hint: auto references "decay" to the base
-  // type - no consts no refs)
+  // type - no consts no refs).
   auto y3  = y2;
   auto &y4 = y2;
   y3       = 3;

@@ -8,15 +8,14 @@
 #include <optional>
 #include <vector>
 
+// Auto types
+//
+// OK, so all functions must be declared like this...
+
 auto main() -> int
 {
-
-  // ------------------
-  // Auto types
-  // ------------------
-
-  // Type inference is a game changer. You can simplify complicated types with auto. But it is a balance of convenience over
-  // readability.
+  // Now I have your attention... but really type inference is a game changer. You can simplify complicated types with auto. But it
+  // is a balance of convenience over readability.
   auto x1 = 5u;
   auto x2{0.0};
   auto str{"blah"};
@@ -30,7 +29,7 @@ auto main() -> int
 
   assert(y1 == 2 && y2 == 2);
 
-  // But what do these even point to? (Hint: auto references "decay" to the base type - no consts no refs)
+  // But what do these even point to? (Hint: auto references "decay" to the base type - no consts no refs).
   auto y3 = y2;
   auto &y4 = y2;
   y3 = 3;
@@ -57,8 +56,8 @@ auto main() -> int
   // Initialiser lists
   // ------------------
 
-  // We used to create a vector and then push elements onto it (ignoring the potential copy overhead of resizing vectors). But
-  // with initialiser lists you can populate containers much more concisely.
+  // We used to create a vector and then push elements onto it (ignoring the potential copy overhead of resizing vectors). But with
+  // initialiser lists you can populate containers much more concisely.
 
   // Let's start with a container
   const std::list<int> v1{1, 2, 3, 4, 5, 6};
@@ -101,11 +100,13 @@ auto main() -> int
   for (auto i = v2.begin(); i != v2.end(); ++i)
     *i += 1;
 
-  // In fact we can drop the iterators altogether and also avoid that strange dereferencing idiom.
+  // In fact we can drop the iterators altogether and also avoid that strange
+  // dereferencing idiom.
   for (int &i : v3)
     i += 1;
 
-  // Or even use auto. Note you don't have access to the current index, which isn't necessarily a bad thing.
+  // Or even use auto. Note you don't have access to the current index, which
+  // isn't necessarily a bad thing.
   for (auto &i : v4)
     i += 1;
 
@@ -116,10 +117,13 @@ auto main() -> int
 
   // Lambda expressions
   //
-  // Think function pointers but a much friendlier implementation. Call like a regular function or pass them as a parameter.
+  // Think function pointers but a much friendlier implementation. Call like a
+  // regular function or pass them as a parameter.
   //
-  // You can also define them *in place* so you don't have to go hunting for the implementation like you might if you passed a
-  // function name. Here's another new for-loop variation too. Note the use of the cbegin routine rather than the method.
+  // You can also define them *in place* so you don't have to go hunting for the
+  // implementation like you might if you passed a function name. Here's another
+  // new for-loop variation too. Note the use of the cbegin routine rather than
+  // the method.
   const auto printer = []() { std::cout << "I am a first-class citizen\n"; };
 
   printer(); // Call like a function
