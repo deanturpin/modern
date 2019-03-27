@@ -9,9 +9,9 @@ all: tmp
 
 CXX = g++-8
 
-FLAGS = --std=c++2a --all-warnings --extra-warnings -Wno-address \
-	-Wshadow -Wfloat-equal -Weffc++ -Wdelete-non-virtual-dtor \
-	-Wno-unused-variable
+FLAGS = --std=c++2a --all-warnings --extra-warnings --pedantic \
+	-Wshadow -Wfloat-equal -Weffc++ -Wdelete-non-virtual-dtor
+	
 
 tmp/%.o: %.cpp
 	$(CXX) $(FLAGS) -o $@ $< -lstdc++fs -lpthread

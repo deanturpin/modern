@@ -4,6 +4,7 @@
 #include <deque>
 #include <future>
 #include <iostream>
+#include <list>
 #include <optional>
 #include <vector>
 
@@ -23,13 +24,14 @@ auto main() -> int {
   // review but are perfectly valid code.
   int y1 = 1;
   int &y2 = y1;
+
+  // So updating y2 actually updates y1
   y2 = 2;
 
-  assert(y1 == 2);
-  assert(y2 == 2);
+  assert(y1 == 2 && y2 == 2);
 
-  // What do these even point to? (Hint: auto references "decay" to the base
-  // type)
+  // But what do these even point to? (Hint: auto references "decay" to the
+  // base type - no consts no refs)
   auto y3 = y2;
   auto &y4 = y2;
   y3 = 3;
@@ -41,6 +43,18 @@ auto main() -> int {
   assert(y4 == 4);
 
   // ------------------
+  // Brace initialers
+  // ------------------
+
+  // Brace initialisers take a bit of getting used to but they do give you extra
+  // checks. For instance this gives a narrowing warning.
+  const double wide{1.0};
+  const float narrow{wide};
+
+  assert(sizeof narrow == 4);
+  assert(sizeof wide == 8);
+
+  // ------------------
   // Initialiser lists
   // ------------------
 
@@ -49,11 +63,11 @@ auto main() -> int {
   // lists you can populate containers much more concisely.
 
   // Let's start with a container
-  const std::vector<int> v1{1, 2, 3, 4, 5, 6};
+  const std::list<int> v1{1, 2, 3, 4, 5, 6};
 
   // Make some copies
-  std::vector<int> v2 = v1;
-  std::vector<int> v3{v1};
+  std::list<int> v2 = v1;
+  std::list<int> v3{v1};
 
   // Even make a copy using auto
   auto v4{v1};
@@ -81,7 +95,7 @@ auto main() -> int {
 
   // Clumsy explicit iterator declarations can be cleaned up with auto.
   // And we can avoid that strange dereferencing idiom.
-  for (/* auto */ std::vector<int>::iterator i = v2.begin(); i != v2.end(); ++i)
+  for (/* auto */ std::list<int>::iterator i = v2.begin(); i != v2.end(); ++i)
     *i += 1;
 
   // We can drop the iterators altogether
@@ -103,7 +117,7 @@ auto main() -> int {
   // ------------------
 
   // Think function pointers but a much friendlier implementation
-  const auto printer = []() { std::cout << "I am a lambda\n"; };
+  const auto printer = []() { std::cout << "I am a first class citizen\n"; };
 
   // Call like a regular function or pass them as a parameter
   printer();
@@ -182,14 +196,6 @@ auto main() -> int {
 
   assert(netmask == 0xff'ff'ff'00);
   assert(sizeof netmask == 4);
-
-  // ------------------
-  // Brace initialers
-  // ------------------
-
-  // Brace initialisers take a bit of getting used to but they do give you extra
-  // checks. For instance this gives a narrowing warning.
-  const float narrow{0.1};
 
   // ------------------
   // Move semantics
