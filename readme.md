@@ -27,7 +27,8 @@ auto main() -> int {
   assert(y1 == 2);
   assert(y2 == 2);
 
-  // What do these even point to? (Hint: auto references "decay")
+  // What do these even point to? (Hint: auto references "decay" to the base
+  // type)
   auto y3 = y2;
   auto &y4 = y2;
   y3 = 3;
