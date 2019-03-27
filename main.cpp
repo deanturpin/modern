@@ -11,7 +11,7 @@ auto main() -> int {
   // Auto types
   // ------------------
 
-  // Type inference is a game changer You can simplify complicated types with
+  // Type inference is a game changer. You can simplify complicated types with
   // auto. But it is a balance of convenience over readability.
   auto x1 = 5u;
   auto x2{0.0};
