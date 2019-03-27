@@ -42,7 +42,7 @@ auto main() -> int {
   // Initialiser lists
   // ------------------
 
-  // It was common to create a vector and then push elements onto it (ignoring
+  // We used to create a vector and then push elements onto it (ignoring
   // the potential copy overhead of resizing vectors). But with initialiser
   // lists you can populate containers much more concisely.
 
@@ -53,7 +53,7 @@ auto main() -> int {
   std::vector<int> v2 = v1;
   std::vector<int> v3{v1};
 
-  // Make a copy using auto
+  // Even make a copy using auto
   auto v4{v1};
 
   // Tnere are often "make_" routines to build common types but you can also
@@ -61,7 +61,7 @@ auto main() -> int {
   const std::pair<int, std::string> p1 = std::make_pair(1, "two");
   const std::pair<int, std::string> p2{1, "two"};
 
-  // Similarly for creating more complex types.
+  // Similarly for initialising more complex types
   struct S {
     int x;
     struct Foo {
@@ -82,16 +82,16 @@ auto main() -> int {
   for (/* auto */ std::vector<int>::iterator i = v2.begin(); i != v2.end(); ++i)
     *i += 1;
 
-  // Drop the iterators altogether
+  // We can drop the iterators altogether
   for (int &i : v3)
     i += 1;
 
-  // Or even better use auto. Note you don't have access to the current index,
-  // which isn't necessarily a bad thing.
+  // Or even use auto. Note you don't have access to the current index, which
+  // isn't necessarily a bad thing.
   for (auto &i : v4)
     i += 1;
 
-  // Confirm they're all identical
+  // Confirm they're what we expect after all the loops
   assert(v1 != v2);
   assert(v2 == v3);
   assert(v2 == v4);
@@ -103,12 +103,12 @@ auto main() -> int {
   // Think function pointers but a much friendlier implementation
   const auto printer = []() { std::cout << "I am a lambda\n"; };
 
-  // Call like a regular function
+  // Call like a regular function or pass them as a parameter
   printer();
 
-  // However, you can define them in place as a parameter so you don't have to
-  // go hunting for the implementation. Here's another new for-loop variation
-  // too. Note the use of the cbegin routine rather than the method.
+  // You can also define them *in place* so you don't have to go hunting for
+  // the implementation. Here's another new for-loop variation too. Note the
+  // use of the cbegin routine rather than the method.
   const std::vector<double> d{0.0, 0.1, 0.2};
   std::for_each(std::cbegin(d), std::cend(d),
                 [](const auto &i) { std::cout << i << '\n'; });
