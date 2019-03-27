@@ -46,7 +46,7 @@ auto main() -> int {
   // ------------------
 
   // Brace initialisers take a bit of getting used to but they do give you extra
-  // checks. For instance this gives a narrowing warning.
+  // checks. The compiler coughs a narrowing warning for the following.
   const double wide{1.0};
   const float narrow{wide};
 
@@ -71,12 +71,10 @@ auto main() -> int {
   // Even make a copy using auto
   auto v4{v1};
 
-  // Tnere are often "make_" routines to build common types but you can also
-  // just use an init list.
-  const std::pair<int, std::string> p1 = std::make_pair(1, "two");
-  const std::pair<int, std::string> p2{1, "two"};
+  // Initialise a std::pair
+  const std::pair<int, std::string> p1{1, "two"};
 
-  // Similarly for initialising more complex types
+  // Initialise complex types
   struct S {
     int x;
     struct Foo {
@@ -86,7 +84,7 @@ auto main() -> int {
     } b;
   };
 
-  S s1 = {1, {2, 3, {4, 5, 6}}};
+  const S s1 = {1, {2, 3, {4, 5, 6}}};
 
   // ------------------
   // Range-based for loops
