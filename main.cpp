@@ -121,7 +121,7 @@ auto main() -> int {
 
   // Think function pointers but a much friendlier implementation. Call like a
   // regular function or pass them as a parameter.
-  const auto printer = []() { std::cout << "I am a first class citizen\n"; };
+  const auto printer = []() { std::cout << "I am a first-class citizen\n"; };
 
   printer();
 
