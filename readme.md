@@ -12,9 +12,30 @@ auto main() -> int {
   // Auto types
   // ------------------
 
-  // You can simplify complicated types with auto.
+  // Type inference is a game changer You can simplify complicated types with
+  // auto. But it is a balance of convenience over readability.
   auto x1 = 5u;
-  auto x2 = 0.0;
+  auto x2{0.0};
+  auto str{"blah"};
+
+  // And there are some gotchas that arguably wouldn't make it through code
+  // review but are perfectly valid code.
+  int y1 = 1;
+  int &y2 = y1;
+
+  assert(y1 == 1);
+  assert(y2 == 1);
+
+  // What does these even reference?
+  auto y3 = y2;
+  auto &y4 = y2;
+  y3 = 3;
+  y4 = 4;
+
+  assert(y1 == 4);
+  assert(y2 == 4);
+  assert(y3 == 3);
+  assert(y4 == 4);
 
   // ------------------
   // Initialiser lists
