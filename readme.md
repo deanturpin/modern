@@ -145,10 +145,9 @@ auto main() -> int {
   // Optional types
   // ------------------
 
-  // These overcome the problem of defining a "not initialised" value which
-  // inevitably also means something else or you use -1 and accidentally
-  // indexing an array with it. Your functions can effectively return a
-  // "not-set".
+  // This overcomes the problem of defining a "not initialised" value which is
+  // inevitably used to index an array. Your functions can also effectively
+  // return a "no result".
 
   // Create a container with some default entries
   std::deque<std::optional<long>> options{0, 1, 2, 3, 4};
@@ -159,7 +158,7 @@ auto main() -> int {
   options.back() = {};
   assert(options.size() == 6);
 
-  // Count the valid entries
+  // Count the valid entries with the help of a lambda expression
   const auto c = std::count_if(std::cbegin(options), std::cend(options),
                                [](const auto &o) { return o; });
 
@@ -170,16 +169,19 @@ auto main() -> int {
   // ------------------
 
   // If you're defining hardware interfaces then you'll probably have register
-  // maps like this.
-  const unsigned int reg1{0x1234'5678};
+  // maps like this. Using digit separators could help improve readability in
+  // some cases.
+  const unsigned int reg1 = 0x5692a5b6;
+  const unsigned int reg2 = 0x5692'a5b6;
 
-  // ------------------
-  // Binary literals
-  // ------------------
+  assert(reg1 == reg2);
 
-  // You can even define things in binary if it's more expressive. And also use
-  // types with explicit size.
-  const uint32_t reg2 = 0b0000'11111'0000'1111;
+  // You can even define things in binary if it's clearer. And also specify the
+  // size of a type explicitly.
+  const uint32_t netmask{0b11111111'11111111'11111111'00000000};
+
+  assert(netmask == 0xff'ff'ff'00);
+  assert(sizeof netmask == 4);
 
   // ------------------
   // Brace initialers
