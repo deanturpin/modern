@@ -21,12 +21,13 @@ int main()
   auto x2{0.0};
   auto str{"blah"};
 
-  // And there are some gotchas that arguably wouldn't make it through code
-  // review but are perfectly valid code.
+  // And there are a few gotchas that arguably wouldn't make it through code
+  // review but are perfectly valid code. Let's create a variable and reference
+  // to it.
   int y1 = 1;
   int &y2 = y1;
 
-  // So updating y2 actually updates y1
+  // So updating y2 actually updates y1.
   y2 = 2;
 
   assert(y1 == 2 && y2 == 2);
