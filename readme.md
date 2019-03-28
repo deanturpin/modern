@@ -8,15 +8,15 @@
 #include <optional>
 #include <vector>
 
-// Auto types
-//
-// OK, so all functions must be declared like this...
-
-auto main() -> int
+int main()
 {
-  // Now I have your attention... but really type inference is a game changer.
-  // You can simplify complicated types with auto. But it is a balance of
+
+  // Auto types
+  //
+  // Type inference is a game changer. Essentially you can simplify complicated
+  // (or unknown) type declarations with auto. But it is a balance of
   // convenience over readability.
+
   auto x1 = 5u;
   auto x2{0.0};
   auto str{"blah"};
