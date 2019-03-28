@@ -32,8 +32,8 @@ int main()
 
   assert(y1 == 2 && y2 == 2);
 
-  // But what do these even point to? (Hint: auto references "decay" to the base
-  // type - no consts no refs).
+  // But what do these even point to? (Hint: auto "decays" to the base
+  // type - no consts, no refs).
   auto y3 = y2;
   auto &y4 = y2;
   y3 = 3;
@@ -64,7 +64,7 @@ int main()
   // potential copy overhead of resizing vectors). But with initialiser lists
   // you can populate containers much more concisely.
 
-  // Let's start with a container
+  // Initialise a container
   const std::list<int> v1{1, 2, 3, 4, 5, 6};
 
   // Make some copies
@@ -171,10 +171,8 @@ int main()
   std::deque<std::optional<long>> options{0, 1, 2, 3, 4};
   assert(options.size() == 5);
 
-  // Create some undefined entries
-  options.push_front({});
+  // Make the one at the back undefined
   options.back() = {};
-  assert(options.size() == 6);
 
   // Count the valid entries with the help of a lambda expression
   const auto c = std::count_if(std::cbegin(options), std::cend(options),
