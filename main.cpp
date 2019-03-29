@@ -32,7 +32,7 @@ int main() {
   assert(y1 == 2);
   assert(y2 == 2);
 
-  // But what does auto do with references? Do you get another reference or a
+  // But how does auto deal with references? Do you get another reference or a
   // copy? (Hint: auto "decays" to the base type - no consts, no refs).
   auto y3  = y2;
   auto &y4 = y2;
