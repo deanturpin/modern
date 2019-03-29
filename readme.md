@@ -13,7 +13,8 @@ int main()
 
   // Auto types
   //
-  // Essentially you can simplify complicated (or unknown) type declarations
+  // Type inference is a game changer. Essentially you can simplify complicated
+  // (or unknown) type declarations
   // with auto. But it is a balance of convenience over readability.
 
   auto x1 = 5u;
@@ -23,7 +24,7 @@ int main()
   const std::vector<std::string> wise{"Don't", "look", "at", "the", "finger"};
   const auto first = wise.front();
 
-  // And there are a few gotchas that arguably wouldn't make it through code
+  // But there are a few gotchas that arguably wouldn't make it through code
   // review but are perfectly valid code. Let's create a variable and reference
   // to it.
   int y1 = 1;
