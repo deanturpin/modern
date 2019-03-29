@@ -130,11 +130,13 @@ int main() {
   // the method.
   const auto printer = []() { std::cout << "I am a first-class citizen\n"; };
 
-  printer(); // Call like a function
+  // Call like a function
+  printer();
 
+  // In-place lambda definition
   const std::vector<double> d{0.0, 0.1, 0.2};
   std::for_each(std::cbegin(d), std::cend(d),
-                [](const auto &i) { std::cout << i << '\n'; }); // In-place
+                [](const auto &i) { std::cout << i << '\n'; });
 
   // Threads
   //
@@ -202,17 +204,34 @@ int main() {
   // compiler can now choose to move data where previously it would have copied
   // it, potentially giving huge performance benefits.
 
+  // Type alias
+  //
+  // Create type-safe typedefs with "using". Note the trailing cluster of
+  // angle-brackets are parsed correctly in C++11 (no need to insert spaces).
+  using container_t = std::vector<std::pair<std::string, std::string>>;
+  container_t safe;
+
+  // Structured bindings
+  //
+  // You might declare intermediate variables to make the first/second more
+  // meaningful below.
+  std::pair<std::string, std::string> chuckle{"to me", "to you"};
+  std::cout << chuckle.first << ", " << chuckle.second << '\n';
+
+  // But now you can do it in one expression with structured bindings.
+  auto [barry, paul] = chuckle;
+  std::cout << barry << ", " << paul << '\n';
+
+  // ---------------------------------------------------------------------------
+
   // std::quoted
-  // std::for_each
   // std::string_view
   // std::clamp
   // std::byte
-  // STL algorithms - std::adjacent_difference
   // Raw string literals
   // 64-bit types
   // custom literals - https://en.cppreference.com/w/cpp/language/string_literal
   // override
-  // Structured bindings
   // nullptr
   // Deleted methods
   // Smart pointers
@@ -221,7 +240,9 @@ int main() {
   // bitset
 
   // Algorithms
+  //
   // std::iota
+  // std::adjacent_difference
 
   // C++2a (what will become C++20)
   // three-way comparison using the "spaceship operator", operator <=>
