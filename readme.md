@@ -48,9 +48,8 @@ int main()
 
     // Brace initialers
     //
-    // These do take a bit of getting used to but they do give you extra
-    // checks.  For example the compiler coughs a narrowing warning for the
-    // following.
+    // These take a bit of getting used to but they do give you extra checks.
+    // For example the compiler coughs a narrowing warning for the following.
     double wide{1.0};
     float narrow{wide};
 
@@ -120,12 +119,10 @@ int main()
     // Lambda expressions
     //
     // Think function pointers but a much friendlier implementation. Call like a
-    // regular function or pass them as a parameter.
-    //
-    // You can also define them *in place* so you don't have to go hunting for
-    // the implementation like you might if you passed a function name. Here's
-    // another new for-loop variation too. Note the use of the cbegin routine
-    // rather than the method.
+    // regular function or pass them as a parameter. You can also define them
+    // in-place so you don't have to go hunting for the implementation like you
+    // might if you passed a function name. Here's another new for-loop
+    // variation too. Note the use of the cbegin routine rather than the method.
     const auto printer = []() { std::cout << "I am a first-class citizen\n"; };
 
     // Call like a function
