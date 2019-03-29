@@ -17,9 +17,8 @@ int main()
   // (or unknown) type declarations
   // with auto. But it is a balance of convenience over readability.
 
-  auto x1 = 5u;
-  auto x2{0.0};
-  auto str{"blah"};
+  auto x1 = 5;
+  auto x2{5};
 
   std::vector<std::string> wise{"Don't", "look", "at", "the", "finger"};
   auto first = wise.front();
