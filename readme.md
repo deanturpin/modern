@@ -31,7 +31,8 @@ int main()
     // So updating y2 actually updates y1.
     y2 = 2;
 
-    assert(y1 == 2 && y2 == 2);
+    assert(y1 == 2);
+    assert(y2 == 2);
 
     // But what do these even point to? (Hint: auto "decays" to the base
     // type - no consts, no refs).
