@@ -47,10 +47,8 @@ int main()
   assert(y3 == 3);
   assert(y4 == 4);
 
-  // ------------------
   // Brace initialers
-  // ------------------
-
+  //
   // Brace initialisers take a bit of getting used to but they do give you extra
   // checks. The compiler coughs a narrowing warning for the following.
   double wide{1.0};
@@ -59,10 +57,8 @@ int main()
   assert(sizeof narrow == 4);
   assert(sizeof wide == 8);
 
-  // ------------------
   // Initialiser lists
-  // ------------------
-
+  //
   // We used to create a vector and then push elements onto it (ignoring the
   // potential copy overhead of resizing vectors). But with initialiser lists
   // you can populate containers much more concisely.
@@ -94,10 +90,8 @@ int main()
 
   S s1 = {1, {2, 3, {4, 5, 6}}};
 
-  // ------------------
   // Range-based for loops
-  // ------------------
-
+  //
   // Clumsy explicit iterator declarations can be cleaned up with auto.
   //
   // So this:
@@ -222,7 +216,7 @@ int main()
   std::pair<std::string, std::string> chuckle{"to me", "to you"};
   std::cout << chuckle.first << ", " << chuckle.second << '\n';
 
-  // But now you can do it in one go with structured bindings.
+  // But now you can do it in one expression with structured bindings.
   auto [barry, paul] = chuckle;
   std::cout << barry << ", " << paul << '\n';
 
