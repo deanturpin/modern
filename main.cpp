@@ -20,9 +20,9 @@ int main() {
   std::vector<std::string> wise{"Don't", "look", "at", "the", "finger"};
   auto first = wise.front();
 
-  // But there are a few gotchas that arguably wouldn't make it through code
-  // review but are perfectly valid code. Let's create a variable and reference
-  // to it.
+  // However, there are a few gotchas that arguably wouldn't make it through
+  // code review but are perfectly valid code. Let's create a variable and
+  // reference to it.
   int y1  = 1;
   int &y2 = y1;
 
