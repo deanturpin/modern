@@ -19,8 +19,8 @@ int main() {
   auto x2{0.0};
   auto str{"blah"};
 
-  const std::vector<std::string> wise{"Don't", "look", "at", "the", "finger"};
-  const auto first = wise.front();
+  std::vector<std::string> wise{"Don't", "look", "at", "the", "finger"};
+  auto first = wise.front();
 
   // But there are a few gotchas that arguably wouldn't make it through code
   // review but are perfectly valid code. Let's create a variable and reference
@@ -51,8 +51,8 @@ int main() {
 
   // Brace initialisers take a bit of getting used to but they do give you extra
   // checks. The compiler coughs a narrowing warning for the following.
-  const double wide{1.0};
-  const float narrow{wide};
+  double wide{1.0};
+  float narrow{wide};
 
   assert(sizeof narrow == 4);
   assert(sizeof wide == 8);
@@ -66,7 +66,7 @@ int main() {
   // you can populate containers much more concisely.
 
   // Initialise a container
-  const std::list<int> v1{1, 2, 3, 4, 5, 6};
+  std::list<int> v1{1, 2, 3, 4, 5, 6};
 
   // Make some copies
   std::list<int> v2 = v1;
@@ -76,7 +76,7 @@ int main() {
   auto v4{v1};
 
   // Initialise a std::pair
-  const std::pair<int, std::string> p1{1, "two"};
+  std::pair<int, std::string> p1{1, "two"};
 
   // Initialise complex types
   struct S {
@@ -88,7 +88,7 @@ int main() {
     } b;
   };
 
-  const S s1 = {1, {2, 3, {4, 5, 6}}};
+  S s1 = {1, {2, 3, {4, 5, 6}}};
 
   // ------------------
   // Range-based for loops
