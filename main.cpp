@@ -16,7 +16,6 @@ int main() {
   // with auto. But it is a balance of convenience over readability.
 
   auto x1 = 5;
-  auto x2{5};
 
   std::vector<std::string> wise{"Don't", "look", "at", "the", "finger"};
   auto first = wise.front();
