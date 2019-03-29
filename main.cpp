@@ -17,8 +17,8 @@ int main() {
 
   auto x1 = 5;
 
-  std::vector<std::string> wise{"Don't", "look", "at", "the", "finger"};
-  auto first = wise.front();
+  std::vector<std::string> moon{"Don't", "look", "at", "the", "finger"};
+  auto finger = moon.front();
 
   // However, there are a few gotchas that arguably wouldn't make it through
   // code review but are perfectly valid code. Let's create a variable and
