@@ -65,13 +65,6 @@ int main()
     // Initialise a container
     std::list<int> v1{1, 2, 3, 4, 5, 6};
 
-    // Make some copies
-    std::list<int> v2 = v1;
-    std::list<int> v3{v1};
-
-    // Even make a copy using auto
-    auto v4{v1};
-
     // Initialise a std::pair
     std::pair<int, std::string> p1{1, "two"};
 
@@ -92,10 +85,17 @@ int main()
     // Range-based for loops
     //
     // Clumsy explicit iterator declarations can be cleaned up with auto.
-    //
+
+    // Let's make some copies of v1 to work with
+    std::list<int> v2 = v1;
+    std::list<int> v3{v1};
+    auto v4{v1};
+
     // So this:
-    // for (std::list<int>::iterator i = v2.begin(); i != v2.end(); ++i)
-    //	*i += 1;
+    /*
+    for (std::list<int>::iterator i = v2.begin(); i != v2.end(); ++i)
+        *i += 1;
+    */
 
     // Becomes this:
     for (auto i = v2.begin(); i != v2.end(); ++i)
