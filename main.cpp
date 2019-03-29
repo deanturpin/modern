@@ -45,8 +45,9 @@ int main() {
 
   // Brace initialers
   //
-  // Brace initialisers take a bit of getting used to but they do give you
-  // extra checks. The compiler coughs a narrowing warning for the following.
+  // These do take a bit of getting used to but they do give you extra
+  // checks.  For example the compiler coughs a narrowing warning for the
+  // following.
   double wide{1.0};
   float narrow{wide};
 
