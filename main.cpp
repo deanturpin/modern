@@ -11,9 +11,9 @@ int main() {
 
   // Auto types
   //
-  // Type inference is a game changer. Essentially you can simplify complicated
-  // (or unknown) type declarations with auto. But it is a balance of
-  // convenience over readability.
+  // Type inference is a game changer. Essentially you can simplify
+  // complicated (or unknown) type declarations with auto. But it is a balance
+  // of convenience over readability.
 
   auto x1 = 5;
 
@@ -45,8 +45,8 @@ int main() {
 
   // Brace initialers
   //
-  // Brace initialisers take a bit of getting used to but they do give you extra
-  // checks. The compiler coughs a narrowing warning for the following.
+  // Brace initialisers take a bit of getting used to but they do give you
+  // extra checks. The compiler coughs a narrowing warning for the following.
   double wide{1.0};
   float narrow{wide};
 
@@ -116,10 +116,10 @@ int main() {
   // Think function pointers but a much friendlier implementation. Call like a
   // regular function or pass them as a parameter.
   //
-  // You can also define them *in place* so you don't have to go hunting for the
-  // implementation like you might if you passed a function name. Here's another
-  // new for-loop variation too. Note the use of the cbegin routine rather than
-  // the method.
+  // You can also define them *in place* so you don't have to go hunting for
+  // the implementation like you might if you passed a function name. Here's
+  // another new for-loop variation too. Note the use of the cbegin routine
+  // rather than the method.
   const auto printer = []() { std::cout << "I am a first-class citizen\n"; };
 
   // Call like a function
@@ -140,8 +140,8 @@ int main() {
   // declared explicitly.
   const auto complicated = []() { return 1; };
 
-  // Push the into the background, note we don't have to actually define what f
-  // is thanks to auto. It's actually a std::future<int>
+  // Push the into the background, note we don't have to actually define what
+  // f is thanks to auto. It's actually a std::future<int>
   auto f = std::async(std::launch::async, complicated);
 
   // Do something else and then block until the data is ready. We could change
@@ -177,8 +177,8 @@ int main() {
 
   assert(reg1 == reg2);
 
-  // You can even define things in binary if it's clearer. And also specify the
-  // size of a type explicitly.
+  // You can even define things in binary if it's clearer. And also specify
+  // the size of a type explicitly.
   const uint32_t netmask{0b11111111'11111111'11111111'00000000};
 
   assert(netmask == 0xff'ff'ff'00);
@@ -205,8 +205,8 @@ int main() {
   // Move semantics
   //
   // This is a biggie that you exploit just by moving to C++11 and beyond. The
-  // compiler can now choose to move data where previously it would have copied
-  // it, potentially giving huge performance benefits.
+  // compiler can now choose to move data where previously it would have
+  // copied it, potentially giving huge performance benefits.
 
   // Smart pointers
   //
@@ -222,8 +222,8 @@ int main() {
   // std::byte
   // Raw string literals
   // 64-bit types
-  // custom literals - https://en.cppreference.com/w/cpp/language/string_literal
-  // override
+  // custom literals -
+  // https://en.cppreference.com/w/cpp/language/string_literal override
   // nullptr
   // Deleted methods
   // Smart pointers
