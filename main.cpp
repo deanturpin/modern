@@ -32,8 +32,8 @@ int main() {
   assert(y1 == 2);
   assert(y2 == 2);
 
-  // But what do these even point to? (Hint: auto "decays" to the base
-  // type - no consts, no refs).
+  // But what does auto do with references? Do you get another reference or a
+  // copy? (Hint: auto "decays" to the base type - no consts, no refs).
   auto y3  = y2;
   auto &y4 = y2;
   y3       = 3;
