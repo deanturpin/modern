@@ -230,7 +230,7 @@ int main() {
   // std::filesystem
   // bitset
 
-  // Algorithms to add
+  // Algorithms
   //
   // std::iota
   // std::adjacent_difference
