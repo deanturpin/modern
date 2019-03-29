@@ -148,12 +148,6 @@ int main() {
   // the return type of complicated() and nothing else needs to change.
   std::cout << f.get() << '\n';
 
-  // Smart pointers
-  //
-  // You no longer need to use new and delete explicitly. Smart pointers clean
-  // up after themselves when they go out of scope: Resource Allocation Is
-  // Initialistion (RAII).
-
   // Optional types
   //
   // This overcomes the problem of defining a "not initialised" value which is
@@ -190,12 +184,6 @@ int main() {
   assert(netmask == 0xff'ff'ff'00);
   assert(sizeof netmask == 4);
 
-  // Move semantics
-  //
-  // This is a biggie that you exploit just by moving to C++11 and beyond. The
-  // compiler can now choose to move data where previously it would have copied
-  // it, potentially giving huge performance benefits.
-
   // Type alias
   //
   // Create type-safe typedefs with "using". Note the trailing cluster of
@@ -213,6 +201,18 @@ int main() {
   // But now you can do it in one expression with structured bindings.
   auto [barry, paul] = chuckle;
   std::cout << barry << ", " << paul << '\n';
+
+  // Move semantics
+  //
+  // This is a biggie that you exploit just by moving to C++11 and beyond. The
+  // compiler can now choose to move data where previously it would have copied
+  // it, potentially giving huge performance benefits.
+
+  // Smart pointers
+  //
+  // You no longer need to use new and delete explicitly. Smart pointers clean
+  // up after themselves when they go out of scope: Resource Allocation Is
+  // Initialistion (RAII).
 
   // ---------------------------------------------------------------------------
 
