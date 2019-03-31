@@ -1,6 +1,8 @@
 ```c++
 #include <algorithm>
 #include <cassert>
+#include <chrono>
+#include <complex>
 #include <deque>
 #include <future>
 #include <iostream>
@@ -205,6 +207,18 @@ int main()
   auto [barry, paul] = chuckle;
   std::cout << barry << ", " << paul << '\n';
 
+  // Standard literals
+  using namespace std::complex_literals;
+  using namespace std::string_literals;
+  using namespace std::chrono_literals;
+
+  auto z = 1i;               // auto deduces complex<double>
+  auto str = "hello world"s; // auto deduces string
+  auto dur = 60s;            // auto deduces chrono::seconds
+
+  // Or if you want all the literals.
+  // using namespace std::literals;
+
   // Move semantics
   //
   // This is a biggie that you exploit just by moving to C++11 and beyond. The
@@ -219,10 +233,17 @@ int main()
 
   // ---------------------------------------------------------------------------
 
+  // User literals
+  // double operator "" _Hz(double);
+  // long double operator "" _w(long double);
+  // std::cout << 10_Hz << '\n';
+  // auto l = 20_w;
+
   // std::quoted
   // std::string_view
   // std::clamp
   // std::byte
+  // Lambda captures
   // Raw string literals
   // 64-bit types
   // custom literals -
@@ -233,6 +254,7 @@ int main()
   // Chrono
   // std::filesystem
   // bitset
+  // static_assert
 
   // Algorithms
   //
