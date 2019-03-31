@@ -1,5 +1,7 @@
 #include <algorithm>
 #include <cassert>
+#include <chrono>
+#include <complex>
 #include <deque>
 #include <future>
 #include <iostream>
@@ -200,6 +202,15 @@ int main() {
   // But now you can do it in one expression with structured bindings.
   auto [barry, paul] = chuckle;
   std::cout << barry << ", " << paul << '\n';
+
+  // User literals
+  using namespace std::complex_literals;
+  using namespace std::string_literals;
+  using namespace std::chrono_literals;
+
+  auto z   = 1i;             // auto deduces complex<double>
+  auto str = "hello world"s; // auto deduces string
+  auto dur = 60s;            // auto deduces chrono::seconds
 
   // Move semantics
   //
