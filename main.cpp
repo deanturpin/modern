@@ -215,6 +215,14 @@ int main() {
   // Or if you want all the literals.
   // using namespace std::literals;
 
+  // Tuples
+  //
+  // Like pairs but better. Arbitrary collection of heterogenous types. You can
+  // retrieve values by index (which looks a bit odd) or by type!
+  std::tuple<std::string, double, int> h1{"one", 2.0, 3};
+  std::cout << std::get<std::string>(h1) << ' ' << std::get<0>(h1) << ' '
+            << std::get<double>(h1) << '\n';
+
   // Move semantics
   //
   // This is a biggie that you exploit just by moving to C++11 and beyond. The
