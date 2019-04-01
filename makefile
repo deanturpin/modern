@@ -1,5 +1,4 @@
 all: tmp tmp/main.o
-	clang-format -i main.cpp
 	echo '```c++' > readme.md
 	cat main.cpp >> readme.md
 	echo '```' >> readme.md

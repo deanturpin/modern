@@ -19,6 +19,7 @@ int main()
   // complicated (or unknown) type declarations with auto. But it is a balance
   // of convenience over readability.
 
+
   auto x1 = 5;
 
   std::vector<std::string> moon{"Don't", "look", "at", "the", "finger"};
