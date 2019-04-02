@@ -173,8 +173,9 @@ int main() {
   // If you're defining hardware interfaces then you'll probably have register
   // maps like this. Using digit separators could help improve readability in
   // some cases.
-  const unsigned int reg1 = 0x5692a5b6;
-  const unsigned int reg2 = 0x5692'a5b6;
+  int reg1    = 0x5692a5b6;
+  int reg2    = 0x5692'a5b6;
+  double reg3 = 1'000.000'001;
 
   assert(reg1 == reg2);
 

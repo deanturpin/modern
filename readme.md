@@ -10,15 +10,13 @@
 #include <optional>
 #include <vector>
 
-int main()
-{
+int main() {
 
   // Auto types
   //
   // Type inference is a game changer. Essentially you can simplify
   // complicated (or unknown) type declarations with auto. But it is a balance
   // of convenience over readability.
-
 
   auto x1 = 5;
 
@@ -28,7 +26,7 @@ int main()
   // However, there are a few perfectly valid gotchas that arguably wouldn't
   // make it through code review. Let's create a variable and a reference to
   // it.
-  int y1 = 1;
+  int y1  = 1;
   int &y2 = y1;
 
   // So updating y2 actually updates y1.
@@ -39,10 +37,10 @@ int main()
 
   // But how does auto deal with references? Do you get another reference or a
   // copy? (Hint: auto "decays" to the base type - no consts, no refs).
-  auto y3 = y2;
+  auto y3  = y2;
   auto &y4 = y2;
-  y3 = 3;
-  y4 = 4;
+  y3       = 3;
+  y4       = 4;
 
   assert(y1 == 4);
   assert(y2 == 4);
@@ -72,11 +70,9 @@ int main()
   std::pair<int, std::string> p1{1, "two"};
 
   // Initialise complex types
-  struct S
-  {
+  struct S {
     int x;
-    struct Foo
-    {
+    struct Foo {
       int i;
       int j;
       int a[3];
@@ -178,8 +174,9 @@ int main()
   // If you're defining hardware interfaces then you'll probably have register
   // maps like this. Using digit separators could help improve readability in
   // some cases.
-  const unsigned int reg1 = 0x5692a5b6;
-  const unsigned int reg2 = 0x5692'a5b6;
+  int reg1 = 0x5692a5b6;
+  int reg2 = 0x5692'a5b6;
+  double reg3 = 1'000.000'001;
 
   assert(reg1 == reg2);
 
@@ -213,7 +210,7 @@ int main()
   using namespace std::string_literals;
   using namespace std::chrono_literals;
 
-  auto z = 1i;               // auto deduces complex<double>
+  auto z   = 1i;             // auto deduces complex<double>
   auto str = "hello world"s; // auto deduces string
   auto dur = 60s;            // auto deduces chrono::seconds
 
