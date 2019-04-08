@@ -20,7 +20,7 @@ int main() {
 
   auto x1 = 5;
 
-  std::vector<std::string> moon{"Don't", "look", "at", "the", "finger"};
+  std::vector<std::string> moon = {"Don't", "look", "at", "the", "finger"};
   auto finger = moon.front();
 
   // However, there are a few perfectly valid gotchas that arguably wouldn't
@@ -51,6 +51,7 @@ int main() {
   //
   // These take a bit of getting used to but they do give you extra checks.
   // For example the compiler coughs a narrowing warning for the following.
+  // The "moon" vector above we could have equally declared without the "=".
   double wide{1.0};
   float narrow{wide};
 
