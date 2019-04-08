@@ -251,7 +251,6 @@ int main() {
 
   // ---------------------------------------------------------------------------
 
-  // User literals
   // double operator "" _Hz(double);
   // long double operator "" _w(long double);
   // std::cout << 10_Hz << '\n';
@@ -261,10 +260,10 @@ int main() {
   // std::quoted
   // std::string_view
   // std::clamp
-  // Lambda captures
   // Raw string literals
   // 64-bit types
-  // custom literals -
+  // User literals
+  // Lambda captures
   // https://en.cppreference.com/w/cpp/language/string_literal override
   // nullptr
   // Deleted methods
