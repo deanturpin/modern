@@ -225,6 +225,12 @@ int main() {
   std::cout << std::get<std::string>(h1) << ' ' << std::get<0>(h1) << ' '
             << std::get<double>(h1) << '\n';
 
+  // byte
+  //
+  // When you really want something to be a byte and not something that looks a
+  // bit like a char.
+  std::byte b1{4};
+
   // Things to remove
   //
   // inline - just let the compiler decide what should be inlined. It will
@@ -254,7 +260,6 @@ int main() {
   // std::quoted
   // std::string_view
   // std::clamp
-  // std::byte
   // Lambda captures
   // Raw string literals
   // 64-bit types
