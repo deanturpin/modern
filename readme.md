@@ -21,7 +21,7 @@ int main() {
   auto x1 = 5;
 
   std::vector<std::string> moon = {"Don't", "look", "at", "the", "finger"};
-  auto finger = moon.front();
+  auto finger                   = moon.front();
 
   // However, there are a few perfectly valid gotchas that arguably wouldn't
   // make it through code review. Let's create a variable and a reference to
@@ -225,6 +225,10 @@ int main() {
   std::tuple<std::string, double, int> h1{"one", 2.0, 3};
   std::cout << std::get<std::string>(h1) << ' ' << std::get<0>(h1) << ' '
             << std::get<double>(h1) << '\n';
+
+  // Things to remove
+  //
+  // inline - just let the compiler decide what should be inlined. It will probably ignore you anyway.
 
   // Move semantics
   //

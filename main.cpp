@@ -225,6 +225,11 @@ int main() {
   std::cout << std::get<std::string>(h1) << ' ' << std::get<0>(h1) << ' '
             << std::get<double>(h1) << '\n';
 
+  // Things to remove
+  //
+  // inline - just let the compiler decide what should be inlined. It will
+  // probably ignore you anyway.
+
   // Move semantics
   //
   // This is a biggie that you exploit just by moving to C++11 and beyond. The
