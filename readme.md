@@ -4,6 +4,7 @@
 #include <chrono>
 #include <complex>
 #include <deque>
+#include <utility>
 #include <future>
 #include <iostream>
 #include <list>
@@ -231,6 +232,13 @@ int main() {
   // When you really want something to be a byte and not something that looks a
   // bit like a char.
   std::byte b1{4};
+
+  // Exchanging values
+  //
+  // Replace that old declare a temp variable idiom with an atomic update.
+  // std::exchange also returns the original value.
+  int current = 5;
+  int previous = std::exchange(current, 6);
 
   // Things to remove
   //
