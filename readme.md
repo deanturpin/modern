@@ -4,11 +4,11 @@
 #include <chrono>
 #include <complex>
 #include <deque>
-#include <utility>
 #include <future>
 #include <iostream>
 #include <list>
 #include <optional>
+#include <utility>
 #include <vector>
 
 int main() {
@@ -237,7 +237,7 @@ int main() {
   //
   // Replace that old declare a temp variable idiom with an atomic update.
   // std::exchange also returns the original value.
-  int current = 5;
+  int current  = 5;
   int previous = std::exchange(current, 6);
 
   // Things to remove

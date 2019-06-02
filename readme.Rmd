@@ -1,0 +1,14 @@
+---
+title: Modern C++ Migration
+author: Dean Turpin
+date: "Last update: `r Sys.time()` in `r Sys.timezone()`"
+output:
+  html_document:
+    theme: united
+    highlight: textmate
+---
+
+```{bash, make}
+make
+cat readme.md
+```
